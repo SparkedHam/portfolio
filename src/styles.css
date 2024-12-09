@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes starfield {
+    0% { background-position: 0 0; }
+    100% { background-position: 1000px 1000px; }
+}
+.bg-stars {
+    background-image: radial-gradient(white 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: starfield 20s linear infinite;
+}
