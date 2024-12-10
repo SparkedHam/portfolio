@@ -1,3 +1,4 @@
+// Navigation.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-scroll';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPaperclip, FaBars, FaTimes } from 'react-icons/fa';

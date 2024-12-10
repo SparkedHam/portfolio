@@ -1,3 +1,4 @@
+// SkillOverlay.jsx
 import React from 'react';
 
 const SkillOverlay = ({ skill, onClose }) => {
