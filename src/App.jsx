@@ -85,127 +85,145 @@ const App = () => {
         },
     ];
 
-        const closeOverlay = () => setSelectedSkill(null);
+    const closeOverlay = () => setSelectedSkill(null);
 
-        return (
-            <div className="font-sans bg-gray-900 text-gray-100">
-                <Navigation/>
+    return (
+        <div className="font-sans bg-gray-900 text-gray-100">
+            <Navigation/>
 
-                {/* Header Section */}
-                <section
-                    id="home"
-                    className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-700 via-gray-900 to-black"
-                >
-                    <div className="absolute inset-0 opacity-25 bg-stars"></div>
-                    <div className="text-center z-10">
-                        <h1 className="text-6xl font-extrabold">
-                            {Array.from('Zachary Cunningham').map((letter, index) => (
-                                <span
-                                    key={index}
-                                    className="inline-block animate-letter-reveal"
-                                    style={{
-                                        animationDelay: `${index * 0.05}s`,
-                                        display: letter === ' ' ? 'inline' : 'inline-block',
-                                    }}
-                                >
-                    {letter}
-                </span>
-                            ))}
-                        </h1>
-                        <p
-                            className="text-lg mt-4 opacity-0 animate-slide-up-fade"
-                            style={{
-                                animationDelay: '1.5s',
-                                animationFillMode: 'forwards',
-                            }}
+            {/* Header Section */}
+            <section
+                id="home"
+                className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-700 via-gray-900 to-black"
+            >
+                <div className="absolute inset-0 opacity-25 bg-stars"></div>
+                <div className="text-center z-10">
+                    <h1 className="text-6xl font-extrabold">
+            <span className="inline md:inline-block">
+                {Array.from('Zachary').map((letter, index) => (
+                    <span
+                        key={`first-name-${index}`}
+                        className="inline-block animate-letter-reveal"
+                        style={{
+                            animationDelay: `${index * 0.05}s`,
+                            display: letter === ' ' ? 'inline' : 'inline-block',
+                        }}
+                    >
+                        {letter}
+                    </span>
+                ))}
+            </span>
+                        <span className="hidden md:inline">&nbsp;</span>
+                        <br className="md:hidden"/>
+                        <span className="inline md:inline-block">
+                {Array.from('Cunningham').map((letter, index) => (
+                    <span
+                        key={`last-name-${index}`}
+                        className="inline-block animate-letter-reveal"
+                        style={{
+                            animationDelay: `${(index + 8) * 0.05}s`, // Adjust delay for last name
+                            display: letter === ' ' ? 'inline' : 'inline-block',
+                        }}
+                    >
+                        {letter}
+                    </span>
+                ))}
+            </span>
+                    </h1>
+                    <p
+                        className="text-lg mt-4 opacity-0 animate-slide-up-fade"
+                        style={{
+                            animationDelay: '1.5s',
+                            animationFillMode: 'forwards',
+                        }}
+                    >
+                        Driven Systems Administrator & Software Engineer
+                    </p>
+                </div>
+            </section>
+
+
+            {/* Skills Section */}
+            <section id="skills"
+                     className="p-6 md:p-12 lg:p-32 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800">
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Skills</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                    {skills.map((skill) => (
+                        <button
+                            key={skill.name}
+                            className={`transform transition duration-300 hover:scale-105 p-6 rounded-lg shadow-md text-center ${skill.color} text-gray-100 hover:shadow-xl`}
+                            onClick={() => setSelectedSkill(skill)}
                         >
-                            Driven Systems Administrator & Software Engineer
-                        </p>
+                            <span className="text-4xl flex items-center justify-center mb-2">{skill.icon}</span>
+                            <p className="mt-2 font-medium">{skill.name}</p>
+                        </button>
+                    ))}
+                </div>
+            </section>
+
+            {/* Work Section */}
+            <section id="work" className="p-6 md:p-12 lg:p-32 bg-gradient-to-tl from-gray-900 to-gray-800">
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Work History</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div
+                        className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
+                    >
+                        <h3 className="text-xl font-semibold">System Administrator</h3>
+                        <p className="text-gray-400">Sparked Host LLC (Jan 2022 - Present)</p>
+                        <ul className="list-disc mt-4 pl-4">
+                            <li>Managed onboarding/offboarding of employees</li>
+                            <li>Provisioned software/hardware per security policies</li>
+                            <li>Oversaw hundreds of Linux-based systems</li>
+                        </ul>
                     </div>
-                </section>
-
-
-                {/* Skills Section */}
-                <section id="skills"
-                         className="p-6 md:p-12 lg:p-32 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Skills</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                        {skills.map((skill) => (
-                            <button
-                                key={skill.name}
-                                className={`transform transition duration-300 hover:scale-105 p-6 rounded-lg shadow-md text-center ${skill.color} text-gray-100 hover:shadow-xl`}
-                                onClick={() => setSelectedSkill(skill)}
-                            >
-                                <span className="text-4xl flex items-center justify-center mb-2">{skill.icon}</span>
-                                <p className="mt-2 font-medium">{skill.name}</p>
-                            </button>
-                        ))}
+                    <div
+                        className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
+                    >
+                        <h3 className="text-xl font-semibold">Producer</h3>
+                        <p className="text-gray-400">Just in Live Stream (Dec 2020 - Present)</p>
+                        <ul className="list-disc mt-4 pl-4">
+                            <li>Managed live streams ensuring optimal user experience</li>
+                            <li>Developed software for streamlined live streaming</li>
+                        </ul>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* Work Section */}
-                <section id="work" className="p-6 md:p-12 lg:p-32 bg-gradient-to-tl from-gray-900 to-gray-800">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Work History</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div
-                            className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
-                        >
-                            <h3 className="text-xl font-semibold">System Administrator</h3>
-                            <p className="text-gray-400">Sparked Host LLC (Jan 2022 - Present)</p>
-                            <ul className="list-disc mt-4 pl-4">
-                                <li>Managed onboarding/offboarding of employees</li>
-                                <li>Provisioned software/hardware per security policies</li>
-                                <li>Oversaw hundreds of Linux-based systems</li>
-                            </ul>
-                        </div>
-                        <div
-                            className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
-                        >
-                            <h3 className="text-xl font-semibold">Producer</h3>
-                            <p className="text-gray-400">Just in Live Stream (Dec 2020 - Present)</p>
-                            <ul className="list-disc mt-4 pl-4">
-                                <li>Managed live streams ensuring optimal user experience</li>
-                                <li>Developed software for streamlined live streaming</li>
-                            </ul>
-                        </div>
+            {/* Education Section */}
+            <section id="education"
+                     className="p-6 md:p-12 lg:p-32 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
+                <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Education</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div
+                        className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
+                    >
+                        <h3 className="text-xl font-semibold">University of Wisconsin-Eau Claire</h3>
+                        <p className="text-gray-400">B.S. Software Engineering</p>
+                        <p className="text-gray-400">Sep 2019 - May 2022 (Transferred)</p>
                     </div>
-                </section>
-
-                {/* Education Section */}
-                <section id="education"
-                         className="p-6 md:p-12 lg:p-32 bg-gradient-to-br from-gray-800 via-gray-700 to-gray-900">
-                    <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Education</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div
-                            className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
-                        >
-                            <h3 className="text-xl font-semibold">University of Wisconsin-Eau Claire</h3>
-                            <p className="text-gray-400">B.S. Software Engineering</p>
-                            <p className="text-gray-400">Sep 2019 - May 2022 (Transferred)</p>
-                        </div>
-                        <div
-                            className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
-                        >
-                            <h3 className="text-xl font-semibold">University of Wisconsin-Stout</h3>
-                            <p className="text-gray-400">B.S. Computer Science (Cyber Security Concentration)</p>
-                            <p className="text-gray-400">Sep 2022 - May 2025 (Expected)</p>
-                        </div>
+                    <div
+                        className="transform transition duration-300 hover:scale-105 bg-gray-700 p-6 rounded-lg shadow-md"
+                    >
+                        <h3 className="text-xl font-semibold">University of Wisconsin-Stout</h3>
+                        <p className="text-gray-400">B.S. Computer Science (Cyber Security Concentration)</p>
+                        <p className="text-gray-400">Sep 2022 - May 2025 (Expected)</p>
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* Contact Section */}
-                <SocialLinks />
+            {/* Contact Section */}
+            <SocialLinks/>
 
-                {/* Footer Section */}
-                <footer className="p-4 bg-gray-800 text-center">
-                    <p>&copy; {new Date().getFullYear()} Zachary Cunningham. All rights reserved.</p>
-                </footer>
+            {/* Footer Section */}
+            <footer className="p-4 bg-gray-800 text-center">
+                <p>&copy; {new Date().getFullYear()} Zachary Cunningham. All rights reserved.</p>
+            </footer>
 
-                {/* Skill Overlay */}
-                {selectedSkill && (
-                    <SkillOverlay skill={selectedSkill} onClose={closeOverlay}/>
-                )}
-            </div>
-        );
-    };
+            {/* Skill Overlay */}
+            {selectedSkill && (
+                <SkillOverlay skill={selectedSkill} onClose={closeOverlay}/>
+            )}
+        </div>
+    );
+};
 export default App;
